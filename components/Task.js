@@ -1,25 +1,22 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 
-export default function Task(props) {
+function Task(props) {
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
-      <View style={styles.circular}></View>
+      <TouchableOpacity style={styles.circular} onPress={() => { props.removeTask(props.text) }}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   item: {
-    position: 'absolute',
-    width: '335px',
-    height: '53px',
-    left: '20px',
-    top: '152px',
+    width: 335,
+    height: 53,
 
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
@@ -29,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+    marginTop: 20,
   },
   itemLeft: {
     flexDirection: 'row',
@@ -61,7 +59,9 @@ const styles = StyleSheet.create({
 
     borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: '#2F69FF',
+    borderColor: '#c2403d',
     borderRadius: 5,
   },
 })
+
+export default Task;
